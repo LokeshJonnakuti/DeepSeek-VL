@@ -18,7 +18,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from threading import Thread
-from typing import List
+from typing import Optional, List
 
 import torch
 import transformers
@@ -64,7 +64,8 @@ def convert_conversation_to_prompts(conversation: Conversation):
 
 
 class StoppingCriteriaSub(StoppingCriteria):
-    def __init__(self, stops=[], encounters=1):
+    def __init__(self, stops=None, encounters=1):
+        stops = [] if stops is None else stops
         super().__init__()
         self.stops = [stop.to("cuda") for stop in stops]
 
@@ -125,9 +126,10 @@ def generate(
     temperature: float = 0,
     repetition_penalty=1.1,
     top_p: float = 0.95,
-    stop_words: List[str] = [],
+    stop_words: Optional[List[str]] = None,
 ):
     """Stream the text output from the multimodality model with prompt and image inputs."""
+    stop_words = [] if stop_words is None else stop_words
     inputs_embeds = vl_gpt.prepare_inputs_embeds(**prepare_inputs)
 
     streamer = TextIteratorStreamer(tokenizer)
