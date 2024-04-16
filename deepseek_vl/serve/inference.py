@@ -18,19 +18,18 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from threading import Thread
-from typing import Optional, List
+from typing import List, Optional
 
 import torch
 import transformers
+from deepseek_vl.models import MultiModalityCausalLM, VLChatProcessor
+from deepseek_vl.utils.conversation import Conversation
 from transformers import (
     AutoModelForCausalLM,
     StoppingCriteria,
     StoppingCriteriaList,
     TextIteratorStreamer,
 )
-
-from deepseek_vl.models import MultiModalityCausalLM, VLChatProcessor
-from deepseek_vl.utils.conversation import Conversation
 
 
 def load_model(model_path):
@@ -75,7 +74,7 @@ class StoppingCriteriaSub(StoppingCriteria):
         for stop in self.stops:
             if input_ids.shape[-1] < len(stop):
                 continue
-            if torch.all((stop == input_ids[0][-len(stop) :])).item():
+            if torch.all(stop == input_ids[0][-len(stop) :]).item():
                 return True
 
         return False

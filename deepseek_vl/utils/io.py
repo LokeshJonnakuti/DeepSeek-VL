@@ -22,9 +22,8 @@ from typing import Dict, List
 
 import PIL.Image
 import torch
-from transformers import AutoModelForCausalLM
-
 from deepseek_vl.models import MultiModalityCausalLM, VLChatProcessor
+from transformers import AutoModelForCausalLM
 
 
 def load_pretrained_model(model_path: str):
@@ -73,6 +72,6 @@ def load_pil_images(conversations: List[Dict[str, str]]) -> List[PIL.Image.Image
 
 
 def load_json(filepath):
-    with open(filepath, "r") as f:
+    with open(filepath) as f:
         data = json.load(f)
         return data

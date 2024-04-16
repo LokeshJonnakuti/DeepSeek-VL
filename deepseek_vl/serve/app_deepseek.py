@@ -35,7 +35,6 @@ from app_modules.gradio_utils import (
 from app_modules.overwrites import reload_javascript
 from app_modules.presets import CONCURRENT_COUNT, description, description_top, title
 from app_modules.utils import configure_logger, is_variable_assigned, strip_stop_words
-
 from deepseek_vl.serve.inference import (
     convert_conversation_to_prompts,
     deepseek_generate,
@@ -316,7 +315,7 @@ def retry(
 
 
 def build_demo(MODELS):
-    with open("deepseek_vl/serve/assets/custom.css", "r", encoding="utf-8") as f:
+    with open("deepseek_vl/serve/assets/custom.css", encoding="utf-8") as f:
         customCSS = f.read()
 
     with gr.Blocks(theme=gr.themes.Soft()) as demo:
