@@ -22,10 +22,9 @@ from typing import Dict, List, Literal, Optional, Tuple, Union
 import torch
 import torch.nn as nn
 import torchvision.transforms
-from einops import rearrange
-
 from deepseek_vl.models.sam import create_sam_vit
 from deepseek_vl.models.siglip_vit import create_siglip_vit
+from einops import rearrange
 
 
 class CLIPVisionTower(nn.Module):

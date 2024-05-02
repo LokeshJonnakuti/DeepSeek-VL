@@ -18,10 +18,9 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import torch
-from transformers import AutoModelForCausalLM
-
 from deepseek_vl.models import MultiModalityCausalLM, VLChatProcessor
 from deepseek_vl.utils.io import load_pil_images
+from transformers import AutoModelForCausalLM
 
 # specify the path to the model
 model_path = "deepseek-ai/deepseek-vl-7b-chat"
