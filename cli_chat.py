@@ -38,15 +38,15 @@ def load_image(image_file):
 
 def get_help_message(image_token):
     help_msg = (
-        f"\t\t DeepSeek-VL-Chat is a chatbot that can answer questions based on the given image. Enjoy it! \n"
-        f"Usage: \n"
-        f"    1. type `exit` to quit. \n"
+        "\t\t DeepSeek-VL-Chat is a chatbot that can answer questions based on the given image. Enjoy it! \n"
+        "Usage: \n"
+        "    1. type `exit` to quit. \n"
         f"    2. type `{image_token}` to indicate there is an image. You can enter multiple images, "
         f"e.g '{image_token} is a dot, {image_token} is a cat, and what is it in {image_token}?'. "
         f"When you type `{image_token}`, the chatbot will ask you to input image file path. \n"
-        f"    4. type `help` to get the help messages. \n"
-        f"    5. type `new` to start a new conversation. \n"
-        f"    Here is an example, you can type: '<image_placeholder>Describe the image.'\n"
+        "    4. type `help` to get the help messages. \n"
+        "    5. type `new` to start a new conversation. \n"
+        "    Here is an example, you can type: '<image_placeholder>Describe the image.'\n"
     )
 
     return help_msg
