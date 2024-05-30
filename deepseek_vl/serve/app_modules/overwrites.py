@@ -26,7 +26,7 @@ from app_modules.presets import gr
 from app_modules.utils import convert_asis, convert_mdtext, detect_converted_mark
 
 
-def compact_text_chunks(self, prompt, text_chunks: List[str]) -> List[str]:
+def compact_text_chunks(self, prompt, text_chunks: list[str]) -> list[str]:
     logging.debug("Compacting text chunks...🚀🚀🚀")
     combined_str = [c.strip() for c in text_chunks if c.strip()]
     combined_str = [f"[{index+1}] {c}" for index, c in enumerate(combined_str)]
@@ -37,8 +37,8 @@ def compact_text_chunks(self, prompt, text_chunks: List[str]) -> List[str]:
 
 
 def postprocess(
-    self, y: List[Tuple[str | None, str | None]]
-) -> List[Tuple[str | None, str | None]]:
+    self, y: list[tuple[str | None, str | None]]
+) -> list[tuple[str | None, str | None]]:
     """
     Parameters:
         y: List of tuples representing the message and response pairs. Each message and response should be a string, which may be in Markdown format.
@@ -58,8 +58,8 @@ def postprocess(
     return temp
 
 
-with open("deepseek_vl/serve/assets/custom.js", "r", encoding="utf-8") as f, open(
-    "deepseek_vl/serve/assets/Kelpy-Codos.js", "r", encoding="utf-8"
+with open("deepseek_vl/serve/assets/custom.js", encoding="utf-8") as f, open(
+    "deepseek_vl/serve/assets/Kelpy-Codos.js", encoding="utf-8"
 ) as f2:
     customJS = f.read()
     kelpyCodos = f2.read()
@@ -71,7 +71,7 @@ def reload_javascript():
 
     def template_response(*args, **kwargs):
         res = GradioTemplateResponseOriginal(*args, **kwargs)
-        res.body = res.body.replace(b"</html>", f"{js}</html>".encode("utf8"))
+        res.body = res.body.replace(b"</html>", f"{js}</html>".encode())
         res.init_headers()
         return res
 

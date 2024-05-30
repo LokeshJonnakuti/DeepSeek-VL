@@ -21,15 +21,14 @@ from dataclasses import dataclass
 from typing import Dict, List
 
 import torch
+from deepseek_vl.models.image_processing_vlm import VLMImageProcessor
+from deepseek_vl.utils.conversation import get_conv_template
 from PIL.Image import Image
 from transformers import LlamaTokenizerFast
 from transformers.processing_utils import ProcessorMixin
 
-from deepseek_vl.models.image_processing_vlm import VLMImageProcessor
-from deepseek_vl.utils.conversation import get_conv_template
 
-
-class DictOutput(object):
+class DictOutput:
     def keys(self):
         return self.__dict__.keys()
 

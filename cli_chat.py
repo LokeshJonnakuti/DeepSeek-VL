@@ -25,10 +25,9 @@ import sys
 from threading import Thread
 
 import torch
+from deepseek_vl.utils.io import load_pretrained_model
 from PIL import Image
 from transformers import TextIteratorStreamer
-
-from deepseek_vl.utils.io import load_pretrained_model
 
 
 def load_image(image_file):

@@ -22,9 +22,9 @@ From https://github.com/lm-sys/FastChat/blob/main/fastchat/conversation.py
 """
 
 import dataclasses
+from dataclasses import field
 from enum import IntEnum, auto
 from typing import Dict, List
-from dataclasses import field
 
 
 class SeparatorStyle(IntEnum):

@@ -19,6 +19,8 @@
 
 import torch
 from attrdict import AttrDict
+from deepseek_vl.models.clip_encoder import CLIPVisionTower, HybridVisionTower
+from deepseek_vl.models.projector import MlpProjector
 from einops import rearrange
 from transformers import (
     AutoConfig,
@@ -28,9 +30,6 @@ from transformers import (
     PreTrainedModel,
 )
 from transformers.configuration_utils import PretrainedConfig
-
-from deepseek_vl.models.clip_encoder import CLIPVisionTower, HybridVisionTower
-from deepseek_vl.models.projector import MlpProjector
 
 
 def model_name_to_cls(cls_name):
