@@ -24,6 +24,7 @@ From https://github.com/lm-sys/FastChat/blob/main/fastchat/conversation.py
 import dataclasses
 from enum import IntEnum, auto
 from typing import Dict, List
+from dataclasses import field
 
 
 class SeparatorStyle(IntEnum):
@@ -59,9 +60,9 @@ class Conversation:
     # The system message
     system_message: str = ""
     # The names of two roles
-    roles: List[str] = (("USER", "ASSISTANT"),)
+    roles: List[str] = field(default_factory=lambda: (("USER", "ASSISTANT"),))
     # All messages. Each item is (role, message).
-    messages: List[List[str]] = ()
+    messages: List[List[str]] = field(default_factory=tuple)
     # The number of few shot examples
     offset: int = 0
     # The separator style and configurations

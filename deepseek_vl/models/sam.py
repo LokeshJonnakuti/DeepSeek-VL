@@ -5,7 +5,7 @@
 # LICENSE file in the root directory of this source tree.
 
 import copy
-from dataclasses import dataclass
+from dataclasses import field, dataclass
 from functools import partial
 from typing import List, Optional, Tuple, Type, Union
 
@@ -514,8 +514,8 @@ class SAMViTCfg:
     patch_size: int = 16
     window_size: int = 14
     prompt_embed_dim: int = 256
-    global_attn_indexes: Union[List[int], Tuple[int]] = (5, 11, 17, 23)
-    downsample_channels: Union[List[int], Tuple[int]] = (512, 1024)
+    global_attn_indexes: Union[List[int], Tuple[int]] = field(default_factory=lambda: (5, 11, 17, 23))
+    downsample_channels: Union[List[int], Tuple[int]] = field(default_factory=lambda: (512, 1024))
 
 
 SAM_MODEL_CONFIG = {
